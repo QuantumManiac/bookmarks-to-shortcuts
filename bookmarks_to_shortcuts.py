@@ -29,7 +29,7 @@ def load_bookmarks(bookmarks_path: str) -> Dict[str, Any]:
         A dictionary containing the Chrome bookmarks.
     """
     try:
-        with open(bookmarks_path, "r") as bookmarks_file:
+        with open(bookmarks_path, "r", encoding="utf-8") as bookmarks_file:
             bookmarks = json.load(bookmarks_file)
             return bookmarks
     except FileNotFoundError:
