@@ -26,3 +26,6 @@ options:
   -o OUTPUT, --output OUTPUT
                         The output folder to write the bookmarks to. If not specified, the output folder will be the current working directory.
 ```
+
+## Limitations
+- Currently does not properly support bookmarks that point towards files (e.g. PDFs or images)
