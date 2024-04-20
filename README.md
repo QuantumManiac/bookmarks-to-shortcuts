@@ -24,5 +24,5 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
-                        The output folder to write the bookmarks to. If not specified, the output folder will be the same as the folder containing the input file.
+                        The output folder to write the bookmarks to. If not specified, the output folder will be the current working directory.
 ```
