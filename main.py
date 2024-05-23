@@ -1,6 +1,7 @@
 import argparse
 import os
-from bookmarks_to_shortcuts import load_bookmarks, mirror_bookmarks
+from bookmarks_to_shortcuts import mirror_bookmarks
+from utils.enums import BookmarkFileFormat
 
 def main():
     parser = argparse.ArgumentParser(description="Mirrors browser bookmarks to your local filesystem, replicating the directory structure and converting bookmarks into internet shortcuts.")
@@ -10,21 +11,24 @@ def main():
     args = parser.parse_args()
 
     # If format is not specified, infer it from the file extension
-    if not args.format:
+    file_format = None
+    if args.format == "chromium":
+        file_format = BookmarkFileFormat.CHROMIUM
+    elif args.format == "netscape":
+        file_format = BookmarkFileFormat.NETSCAPE
+    else:
         _, ext = os.path.splitext(args.input)
         if ext == ".html":
-            args.format = "netscape"
+            file_format = BookmarkFileFormat.NETSCAPE
             print("file extension is html. Assuming this is a Netscape Bookmark File")
         else:
-            args.format = "chromium"
+            file_format = BookmarkFileFormat.CHROMIUM
             print("file extension is not html. Assuming this is a Chromium Bookmarks file")
-
-    bookmarks = load_bookmarks(args.input)
 
     # By default, the output folder is the current working directory
     output_folder = os.path.abspath(args.output) if args.output else os.getcwd()
 
-    mirror_bookmarks(bookmarks, output_folder)
+    mirror_bookmarks(args.input, output_folder, file_format)
 
 
 if __name__ == "__main__":
