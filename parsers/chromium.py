@@ -8,9 +8,9 @@ from typing import List
 def parse(file: io.TextIOWrapper) -> List[Bookmark | BookmarkFolder]:
     res = []
 
-    bookmarks = json.loads(file.read())
+    bookmarks_data = json.loads(file.read())
 
-    for item in bookmarks["roots"].values():
+    for item in bookmarks_data["roots"].values():
         res.append(parse_item(item))
 
     return res

@@ -1,5 +1,5 @@
 class Bookmark:
-    def __init__(self, title, url):
+    def __init__(self, title: str, url: str):
         self.title = title
         self.url = url
 
@@ -7,7 +7,7 @@ class Bookmark:
         return self.title
 
 class BookmarkFolder: 
-    def __init__(self, title):
+    def __init__(self, title: str):
         self.title = title
         self.children = []
 
