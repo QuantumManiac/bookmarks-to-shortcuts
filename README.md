@@ -36,5 +36,8 @@ options:
                         The output folder to write the bookmarks to. If not specified, the output folder will be the current working directory.
 ```
 
-## Limitations
-- Currently does not properly support bookmarks that point towards files (e.g. PDFs or images)
+## Limitations (Future work)
+- Does not properly support bookmarks that point towards files (e.g. PDFs or images)
+- Does not handle certain edge-cases in the directory structure that bookmarks support but filesystems usually do not
+  - Folder and bookmark being named the same
+  - Multiple bookmarks or bookmark folders in the same directory being named the same
